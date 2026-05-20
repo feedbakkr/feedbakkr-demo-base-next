@@ -2,14 +2,23 @@
 	"name": "feedbakkr-demo-base-next",
 	"version": "0.1.0",
 	"private": true,
+	"engines": {
+		"node": ">=20"
+	},
+	"packageManager": "pnpm@9.15.4",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"security:audit": "pnpm audit --audit-level high",
+		"security:audit:moderate": "pnpm audit --audit-level moderate",
+		"security:osv": "osv-scanner --recursive .",
+		"security:scan": "pnpm run security:audit && pnpm run security:osv",
+		"security:scan:full": "pnpm run security:audit:moderate && pnpm run security:osv"
 	},
 	"dependencies": {
-		"next": "15.5.15",
+		"next": "^15.5.18",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
@@ -19,7 +28,7 @@
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"eslint": "^9",
-		"eslint-config-next": "15.5.15",
+		"eslint-config-next": "^15.5.18",
 		"typescript": "^5"
 	}
 }
